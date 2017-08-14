@@ -2,6 +2,7 @@ package com.example.alien.tryout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
 
@@ -43,8 +45,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final User UsersList = UserList.get(position);
         holder.UserName.setText(UsersList.getUserName());
 
+        Transformation transformation = new RoundedTransformationBuilder()
+                .borderColor(Color.BLACK)
+                .borderWidthDp(3)
+                .cornerRadiusDp(30)
+                .oval(false)
+                .build();
+
         Picasso.with(context)
                 .load(UsersList.getImg_Url())
+                .fit()
+                .transform(transformation)
                 .into(holder.Img_Url);
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {

@@ -14,7 +14,8 @@
         android:id="@+id/mProfilePic"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="4dp" />
+        android:layout_margin="4dp"
+        />
 
     <TextView
         android:id="@+id/mProfileName"

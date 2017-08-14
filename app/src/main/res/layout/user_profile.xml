@@ -59,13 +59,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/MDevImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:scaleType="centerCrop"
                  />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="34sp"
                 android:textStyle="bold"
-                tools:text="Kenny"
+                tools:text="UserName"
                 android:background="#8c000000"/>
 
         </RelativeLayout>
