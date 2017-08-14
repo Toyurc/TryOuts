@@ -42,11 +42,8 @@ public class UsersProfile extends AppCompatActivity {
         GitHubUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String url = profileUrl;
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                Intent callBrowser = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(profileUrl));
+                startActivity(callBrowser);
             }
         });
 

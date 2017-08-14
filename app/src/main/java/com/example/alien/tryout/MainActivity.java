@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++){
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         String UserName = jsonObject1.getString("login");
-                        String GitUrl = jsonObject1.getString("login") ;
+                        String GitUrl = jsonObject1.getString("html_url") ;
                         String UserImage = jsonObject1.getString("avatar_url");
 
                         User UsersProfile = new User(UserName,GitUrl,UserImage);

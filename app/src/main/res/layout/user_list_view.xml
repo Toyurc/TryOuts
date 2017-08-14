@@ -3,10 +3,10 @@
     android:id="@+id/mLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
+    android:layout_marginBottom="2dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="2dp"
     android:background="@color/colorAccent"
     android:orientation="horizontal">
 
@@ -22,7 +22,7 @@
         android:layout_height="80dp"
         android:layout_marginLeft="8dp"
         android:layout_weight="1"
-        android:paddingTop="20dp"
+        android:paddingTop="24dp"
         android:text="hello bro"
         android:textAlignment="center"
         android:textSize="24sp" />
