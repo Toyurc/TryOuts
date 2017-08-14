@@ -3,36 +3,42 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp">
-<android.support.v7.widget.CardView
-    android:id="@+id/mCardView"
-    android:layout_weight="3.21"
-    android:layout_width="match_parent"
-    android:layout_height="0dp">
-    <LinearLayout
-        android:orientation="vertical"
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/mCardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:text="meet the developer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"/>
-    <ImageView
-        android:id="@+id/MDevImage"
-        android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="300dp" />
-    <TextView
-        android:id="@+id/mUSerName"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:text="Toyurc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    </LinearLayout>
-    </android.support.v7.widget.CardView>
+        android:layout_height="0dp"
+        android:layout_weight="3.21">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="meet the developer"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/MDevImage"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/mUSerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toyurc"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

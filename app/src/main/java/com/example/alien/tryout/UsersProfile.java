@@ -39,7 +39,6 @@ public class UsersProfile extends AppCompatActivity {
 
         userNameTextView.setText(userName);
         GitHubUrl.setText(profileUrl);
-
         GitHubUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,9 +59,9 @@ public class UsersProfile extends AppCompatActivity {
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this awesome developer " + userName +
                         ", " + profileUrl);
-                Intent chooser = Intent.createChooser(shareIntent, "Share via");
+                Intent shareVia = Intent.createChooser(shareIntent, "Share via");
                 if (shareIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(chooser);
+                    startActivity(shareVia);
                 }
             }
         });

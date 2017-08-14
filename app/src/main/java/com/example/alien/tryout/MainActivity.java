@@ -58,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
                     for (int i = 0; i < jsonArray.length(); i++){
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        String UserName = jsonObject1.getString("login");
+                        String GitUrl = jsonObject1.getString("login") ;
+                        String UserImage = jsonObject1.getString("avatar_url");
 
-                        User developers = new User(jsonObject1.getString("login"), jsonObject1.getString("html_url"),
-                                jsonObject1.getString("avatar_url"));
-                        profiles.add(developers);
+                        User UsersProfile = new User(UserName,GitUrl,UserImage);
+                        profiles.add(UsersProfile);
 
                     }
 

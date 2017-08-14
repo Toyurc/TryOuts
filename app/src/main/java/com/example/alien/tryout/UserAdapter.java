@@ -26,7 +26,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private ArrayList<User> UserList;
     private Context context;
-
     public UserAdapter(Context ctx,ArrayList<User> mUSerList){
         this.context = ctx;
         this.UserList = mUSerList;
@@ -50,15 +49,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
                 User UsersList = UserList.get(position);
 
-                Intent profileIntent = new Intent(v.getContext(), UsersProfile.class);
+                Intent profileIntent = new Intent(view.getContext(), UsersProfile.class);
                 profileIntent.putExtra(KEY_NAME, UsersList.getUserName());
                 profileIntent.putExtra(KEY_URL, UsersList.getGitHub_Url());
                 profileIntent.putExtra(KEY_IMAGE, UsersList.getImg_Url());
-                v.getContext().startActivity(profileIntent);
+                view.getContext().startActivity(profileIntent);
+
             }
         });
 
