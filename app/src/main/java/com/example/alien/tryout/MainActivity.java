@@ -1,10 +1,14 @@
 package com.example.alien.tryout;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -29,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private ArrayList<User> profiles;
+    View noInternetScreenView;
+    View noDataView;
+    View loadingScreenView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +47,47 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         profiles = new ArrayList<>();
-        fetchData();
+         /*
+        Initialising default Views
+         */
+        loadingScreenView = findViewById(R.id.loading_screen);
+        noInternetScreenView = findViewById(R.id.no_internet_screen);
+        noDataView = findViewById(R.id.no_data);
+
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+            fetchData();
+        }
+        else{
+            /*
+            This code will work when there is no internet connectivity.
+             */
+            recyclerView.setVisibility(View.GONE);
+            loadingScreenView.setVisibility(View.GONE);
+            noDataView.setVisibility(View.GONE);
+            noInternetScreenView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void fetchData() {
-
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+       //TODO
+        loadingScreenView.setVisibility(View.GONE);
+        noInternetScreenView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
+        noDataView.setVisibility(View.VISIBLE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressDialog.dismiss();
+                //TODO
+                loadingScreenView.setVisibility(View.GONE);
+                noDataView.setVisibility(View.GONE);
+                noInternetScreenView.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
