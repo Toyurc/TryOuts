@@ -24,7 +24,7 @@
         android:layout_marginLeft="8dp"
         android:layout_weight="1"
         android:paddingTop="24dp"
-        android:text="hello bro"
+        android:text="@string/hello_bro"
         android:textAlignment="center"
         android:textSize="24sp" />
 
