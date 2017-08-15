@@ -38,7 +38,7 @@ public class UsersProfile extends AppCompatActivity {
                 .into(profileImageView);
 
         userNameTextView.setText(userName);
-        GitHubUrl.setText(profileUrl);
+        GitHubUrl.append(" @"+userName);
         GitHubUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

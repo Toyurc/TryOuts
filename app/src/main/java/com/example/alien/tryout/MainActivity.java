@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchData() {
        //TODO
-        loadingScreenView.setVisibility(View.GONE);
+        loadingScreenView.setVisibility(View.VISIBLE);
         noInternetScreenView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
-        noDataView.setVisibility(View.VISIBLE);
+        noDataView.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 URL, new Response.Listener<String>() {
@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
+                    loadingScreenView.setVisibility(View.VISIBLE);
+                    noInternetScreenView.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.GONE);
+                    noDataView.setVisibility(View.GONE);
 
                     e.printStackTrace();
                 }
