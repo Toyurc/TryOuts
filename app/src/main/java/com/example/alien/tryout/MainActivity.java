@@ -1,6 +1,5 @@
 package com.example.alien.tryout;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,11 +22,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
+
+//TODO: Generally, it make sense. Thumbs up. You did well. Checkout Retrofit, it makes a lot of things easier
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String URL= "https://api.github.com/search/users?q=language:java+location:lagos";
+    private static final String URL = "https://api.github.com/search/users?q=language:java+location:lagos";
 
 
     private RecyclerView recyclerView;
@@ -38,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
     View loadingScreenView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO You can use Butterknife to inject views easily
         recyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -60,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
         if (networkInfo != null && networkInfo.isConnected()) {
 
             fetchData();
-        }
-        else{
+        } else {
             /*
             This code will work when there is no internet connectivity.
              */
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
-       //TODO
+
         loadingScreenView.setVisibility(View.VISIBLE);
         noInternetScreenView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //TODO
+
                 loadingScreenView.setVisibility(View.GONE);
                 noDataView.setVisibility(View.GONE);
                 noInternetScreenView.setVisibility(View.GONE);
@@ -91,18 +92,18 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         String UserName = jsonObject1.getString("login");
-                        String GitUrl = jsonObject1.getString("html_url") ;
+                        String GitUrl = jsonObject1.getString("html_url");
                         String UserImage = jsonObject1.getString("avatar_url");
 
-                        User UsersProfile = new User(UserName,GitUrl,UserImage);
+                        User UsersProfile = new User(UserName, GitUrl, UserImage);
                         profiles.add(UsersProfile);
 
                     }
 
-                    adapter = new UserAdapter(getApplicationContext(),profiles );
+                    adapter = new UserAdapter(getApplicationContext(), profiles);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -126,5 +127,4 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
 }

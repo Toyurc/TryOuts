@@ -6,6 +6,7 @@ package com.example.alien.tryout;
 
 public class User {
 
+    //TODO Improper Variable naming
     private String UserName;
     private String Img_Url;
     private String GitHub_Url;

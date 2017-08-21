@@ -58,6 +58,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 .transform(transformation)
                 .into(holder.Img_Url);
 
+        //TODO ITs not good to handle item clicks here...Read up on how you can use interface to pass the click action to the activity (MainActivity) using the adapter
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
