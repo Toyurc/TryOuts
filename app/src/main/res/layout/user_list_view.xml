@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mLinearLayout"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="2dp"
-    android:background="@drawable/backgroud"
-    android:orientation="horizontal">
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:descendantFocusability="beforeDescendants">
+
+<LinearLayout
+    android:id="@+id/mLinearLayout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_background_selector"
+    android:descendantFocusability="afterDescendants">
+
+    <TextView
+        android:id="@+id/mProfileName"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_margin="4dp"
+        android:layout_weight="1"
+        android:paddingTop="24dp"
+        android:text="@string/hello_bro"
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/mProfilePic"
@@ -17,15 +32,5 @@
         android:layout_margin="4dp"
         />
 
-    <TextView
-        android:id="@+id/mProfileName"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="8dp"
-        android:layout_weight="1"
-        android:paddingTop="24dp"
-        android:text="@string/hello_bro"
-        android:textAlignment="center"
-        android:textSize="24sp" />
-
 </LinearLayout>
+    </FrameLayout>

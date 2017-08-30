@@ -43,7 +43,9 @@ public class UsersProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent callBrowser = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(profileUrl));
-                startActivity(callBrowser);
+                if (callBrowser.resolveActivity(getPackageManager()) != null) {
+                    startActivity(callBrowser);
+                }
             }
         });
 

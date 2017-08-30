@@ -47,7 +47,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         Transformation transformation = new RoundedTransformationBuilder()
                 .borderColor(Color.BLACK)
-                .borderWidthDp(3)
+                .borderWidthDp(2)
                 .cornerRadiusDp(42)
                 .oval(false)
                 .build();
