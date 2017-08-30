@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">TryOut</string>
+    <string name="app_name">Java Developers</string>
     <string name="meet_the_developer">meet the developer</string>
     <string name="hello_bro">hello bro</string>
+    <string name="profile">Full Profile</string>
+    <string name="dev">Check out this awesome developer</string>
 </resources>

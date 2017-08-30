@@ -3,7 +3,11 @@ package com.example.alien.tryout;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +24,8 @@ public class UsersProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView profileImageView = (ImageView) findViewById(R.id.MDevImage);
         TextView userNameTextView = (TextView) findViewById(R.id.mUSerName);
@@ -38,7 +44,7 @@ public class UsersProfile extends AppCompatActivity {
                 .into(profileImageView);
 
         userNameTextView.setText(userName);
-        GitHubUrl.append(" @"+userName);
+        GitHubUrl.append(" @" + userName);
         GitHubUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +70,6 @@ public class UsersProfile extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 }

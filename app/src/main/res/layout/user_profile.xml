@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/resource"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <LinearLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,7 +17,8 @@
         android:layout_height="wrap_content"
         android:text="@string/meet_the_developer"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="#000"/>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,7 +46,7 @@
                 android:gravity="center"
                 android:padding="20dp"
                 android:textColor="@android:color/white"
-                android:textSize="34sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 tools:text="UserName"
                 android:background="#8c000000"/>
@@ -59,10 +66,10 @@
         android:id="@+id/mGitUrl"
         android:textSize="18sp"
         android:textAlignment="center"
-        android:text="Check out this awesome developer"
+        android:text="@string/dev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="HardcodedText" />
+        android:textColor="#000" />
 
         <ImageButton
             android:id="@+id/mImgButton"
@@ -70,7 +77,9 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
+            android:background="#000"
             android:src="?attr/actionModeShareDrawable"
             android:contentDescription="" />
     </LinearLayout>
 </LinearLayout>
+    </ScrollView>

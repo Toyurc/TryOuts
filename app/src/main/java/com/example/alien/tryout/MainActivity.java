@@ -11,10 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.Cache;
+import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -27,7 +32,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String URL= "https://api.github.com/search/users?q=language:java+location:lagos";
+    private static final String URL = "https://api.github.com/search/users?q=language:java+location:lagos";
 
 
     private RecyclerView recyclerView;
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -60,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
         if (networkInfo != null && networkInfo.isConnected()) {
 
             fetchData();
-        }
-        else{
+        } else {
             /*
             This code will work when there is no internet connectivity.
              */
@@ -73,17 +78,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
-       //TODO
+
         loadingScreenView.setVisibility(View.VISIBLE);
         noInternetScreenView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         noDataView.setVisibility(View.GONE);
 
+        Cache cache = new DiskBasedCache(getCacheDir(), 2048 * 2048);
+        Network network = new BasicNetwork(new HurlStack());
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //TODO
+
                 loadingScreenView.setVisibility(View.GONE);
                 noDataView.setVisibility(View.GONE);
                 noInternetScreenView.setVisibility(View.GONE);
@@ -91,18 +100,18 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
-                    for (int i = 0; i < jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         String UserName = jsonObject1.getString("login");
-                        String GitUrl = jsonObject1.getString("html_url") ;
+                        String GitUrl = jsonObject1.getString("html_url");
                         String UserImage = jsonObject1.getString("avatar_url");
 
-                        User UsersProfile = new User(UserName,GitUrl,UserImage);
+                        User UsersProfile = new User(UserName, GitUrl, UserImage);
                         profiles.add(UsersProfile);
 
                     }
 
-                    adapter = new UserAdapter(getApplicationContext(),profiles );
+                    adapter = new UserAdapter(getApplicationContext(), profiles);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -125,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
     }
 
 }
