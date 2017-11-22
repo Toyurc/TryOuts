@@ -6,28 +6,28 @@ package com.example.alien.tryout;
 
 public class User {
 
-    private String UserName;
-    private String Img_Url;
-    private String GitHub_Url;
+    private String userName;
+    private String imgURL;
+    private String githubURL;
 
 
     public User(String userName, String gitUrl, String img_Url){
-        this.UserName = userName;
-        this.GitHub_Url = gitUrl;
-        this.Img_Url = img_Url;
+        this.userName = userName;
+        this.githubURL = gitUrl;
+        this.imgURL = img_Url;
 
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
-    public String getGitHub_Url() {
-        return GitHub_Url;
+    public String getGitHubUrl() {
+        return githubURL;
     }
 
-    public String getImg_Url() {
-        return Img_Url;
+    public String getImgURL() {
+        return imgURL;
     }
 
 }

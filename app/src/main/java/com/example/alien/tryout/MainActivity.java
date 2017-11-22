@@ -1,25 +1,19 @@
 package com.example.alien.tryout;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.volley.Cache;
-import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -28,12 +22,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String URL = "https://api.github.com/search/users?q=language:java+location:lagos";
-
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -42,20 +34,17 @@ public class MainActivity extends AppCompatActivity {
     View noDataView;
     View loadingScreenView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         recyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         profiles = new ArrayList<>();
-         /*
-        Initialising default Views
-         */
+
+        //Initialising default Views
         loadingScreenView = findViewById(R.id.loading_screen);
         noInternetScreenView = findViewById(R.id.no_internet_screen);
         noDataView = findViewById(R.id.no_data);
@@ -67,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
             fetchData();
         } else {
-            /*
-            This code will work when there is no internet connectivity.
-             */
+            //This code will work when there is no internet connectivity.
             recyclerView.setVisibility(View.GONE);
             loadingScreenView.setVisibility(View.GONE);
             noDataView.setVisibility(View.GONE);
@@ -83,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
         noInternetScreenView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         noDataView.setVisibility(View.GONE);
-
-        Cache cache = new DiskBasedCache(getCacheDir(), 2048 * 2048);
-        Network network = new BasicNetwork(new HurlStack());
-
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 URL, new Response.Listener<String>() {
@@ -108,9 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                         User UsersProfile = new User(UserName, GitUrl, UserImage);
                         profiles.add(UsersProfile);
-
                     }
-
                     adapter = new UserAdapter(getApplicationContext(), profiles);
                     recyclerView.setAdapter(adapter);
 
@@ -126,15 +107,10 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 Toast.makeText(MainActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
             }
         });
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
     }
-
 }

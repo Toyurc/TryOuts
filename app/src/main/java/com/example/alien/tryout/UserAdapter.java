@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final User UsersList = UserList.get(position);
-        holder.UserName.setText(UsersList.getUserName());
+        holder.userName.setText(UsersList.getUserName());
 
         Transformation transformation = new RoundedTransformationBuilder()
                 .borderColor(Color.BLACK)
@@ -52,11 +51,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 .oval(false)
                 .build();
 
-        Picasso.with(context)
-                .load(UsersList.getImg_Url())
+        MyApplication.picassoWithCache(context)
+                .with(context)
+                .load(UsersList.getImgURL())
+                .placeholder(R.drawable.ic_account_circle_black_36dp)
                 .fit()
                 .transform(transformation)
-                .into(holder.Img_Url);
+                .into(holder.imgURL);
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +67,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                 Intent profileIntent = new Intent(view.getContext(), UsersProfile.class);
                 profileIntent.putExtra(KEY_NAME, UsersList.getUserName());
-                profileIntent.putExtra(KEY_URL, UsersList.getGitHub_Url());
-                profileIntent.putExtra(KEY_IMAGE, UsersList.getImg_Url());
+                profileIntent.putExtra(KEY_URL, UsersList.getGitHubUrl());
+                profileIntent.putExtra(KEY_IMAGE, UsersList.getImgURL());
                 view.getContext().startActivity(profileIntent);
 
             }
@@ -82,16 +83,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView UserName;
-        public ImageView Img_Url;
-        public TextView GitHub_Url;
+        public TextView userName;
+        public ImageView imgURL;
+        public TextView githubUrl;
         public LinearLayout linearLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            UserName = (TextView) itemView.findViewById(R.id.mProfileName);
-            Img_Url = (ImageView) itemView.findViewById(R.id.mProfilePic);
-            GitHub_Url = (TextView) itemView.findViewById(R.id.mGitUrl);
+            userName = (TextView) itemView.findViewById(R.id.mProfileName);
+            imgURL = (ImageView) itemView.findViewById(R.id.mProfilePic);
+            githubUrl = (TextView) itemView.findViewById(R.id.mGitUrl);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.mLinearLayout);
         }
     }

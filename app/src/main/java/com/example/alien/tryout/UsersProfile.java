@@ -30,7 +30,7 @@ public class UsersProfile extends AppCompatActivity {
         ImageView profileImageView = (ImageView) findViewById(R.id.MDevImage);
         TextView userNameTextView = (TextView) findViewById(R.id.mUSerName);
         ImageButton shareProfile = (ImageButton) findViewById(R.id.mImgButton);
-        TextView GitHubUrl = (TextView) findViewById(R.id.mGitUrl);
+        TextView gitHubURL = (TextView) findViewById(R.id.mGitUrl);
 
 
         Intent intent = getIntent();
@@ -44,8 +44,8 @@ public class UsersProfile extends AppCompatActivity {
                 .into(profileImageView);
 
         userNameTextView.setText(userName);
-        GitHubUrl.append(" @" + userName);
-        GitHubUrl.setOnClickListener(new View.OnClickListener() {
+        gitHubURL.append(" @" + userName);
+        gitHubURL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent callBrowser = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(profileUrl));

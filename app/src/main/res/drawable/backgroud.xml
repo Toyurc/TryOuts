@@ -7,9 +7,4 @@
         android:angle="90"/>
     <!-- <solid android:color="#4A1"/>-->
     <stroke android:width="2dp" android:color="#4a1"/>
-    <corners
-        android:bottomRightRadius="42dp"
-        android:topLeftRadius="42dp"
-        android:bottomLeftRadius="42dp"
-        android:topRightRadius="42dp"
-        /> </shape>
+</shape>
