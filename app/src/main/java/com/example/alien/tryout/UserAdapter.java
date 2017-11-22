@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public static final String KEY_NAME = "name";
-    public static final String KEY_URL = "git_url";
+    public static final String KEY_URL = "gitUrl";
     public static final String KEY_IMAGE = "image";
 
     private ArrayList<User> UserList;

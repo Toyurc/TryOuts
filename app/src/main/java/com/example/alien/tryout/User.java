@@ -11,10 +11,10 @@ public class User {
     private String githubURL;
 
 
-    public User(String userName, String gitUrl, String img_Url){
+    public User(String userName, String gitUrl, String imgUrl){
         this.userName = userName;
         this.githubURL = gitUrl;
-        this.imgURL = img_Url;
+        this.imgURL = imgUrl;
 
     }
 
